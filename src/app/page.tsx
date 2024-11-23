@@ -17,7 +17,7 @@ interface TypeButton {
   handleClick: () => void;
 }
 
-function Button({ text, className, handleClick }: TypeButton) {
+export function Button({ text, className, handleClick }: TypeButton) {
   return (
     <button type="button" className={className} onClick={handleClick}>
       {text}
@@ -25,7 +25,7 @@ function Button({ text, className, handleClick }: TypeButton) {
   );
 }
 
-export { Button };
+
 
 export default function Home() {
   const btnNames = [
