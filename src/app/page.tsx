@@ -17,7 +17,7 @@ interface TypeButton {
   handleClick: () => void;
 }
 
-export function Button({ text, className, handleClick }: TypeButton) {
+function Button({ text, className, handleClick }: TypeButton) {
   return (
     <button type="button" className={className} onClick={handleClick}>
       {text}
