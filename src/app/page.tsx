@@ -99,7 +99,7 @@ export default function Home() {
     <main className="w-screen h-screen bg-gradient-to-tl from-gray-500 to-slate-500 flex items-center justify-center py-3 sm:py-10">
       <form
         onSubmit={handleFormSubmit}
-        className="w-[90%] sm:w-4/6 bg-[#030303e4] lg:w-1/4 selection:bg-transparent h-[80%] rounded-lg border border-white flex flex-col gap-2 p-2"
+        className="w-[90%] sm:w-4/6 bg-[#030303e4] lg:w-1/4 selection:bg-transparent h-[60%] rounded-lg border border-white flex flex-col gap-2 p-2"
         name="calc"
       >
         <input
