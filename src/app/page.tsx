@@ -126,10 +126,10 @@ export default function Home() {
   };
 
   return (
-    <main className="w-screen h-screen bg-gradient-to-tl from-gray-500 to-slate-500 flex items-center justify-center py-3 sm:py-10">
+    <main className="h-fit bg-gradient-to-tl from-gray-500 to-slate-500 flex items-center justify-center py-3 sm:py-10">
       <form
         onSubmit={handleFormSubmit}
-        className="w-[90%] sm:w-4/6 bg-[#030303e4] lg:w-1/4 selection:bg-transparent sm:h-full   rounded-lg border border-white flex flex-col gap-2 p-2"
+        className="w-full sm:w-4/6 bg-[#030303e4] lg:w-1/4 selection:bg-transparent sm:h-full   rounded-lg border border-white flex flex-col gap-2 p-2"
         name="calc"
       >
         <input
@@ -160,7 +160,7 @@ export default function Home() {
                   ? `${btnClasses} 
                     w-12 h-12 text-indigo-300 text-xl rounded-full bg-gray-700 hover:scale-105 hover:bg-gradient-to-r hover:from-gray-500 hover:to-slate-500 focus:ring-4 focus:ring-gray-300`
                   : btn === "Del" || btn === "Clr"
-                  ? `${btnClasses} text-red-300 hover:text-red-700 w-12 rounded-full h-12 text-lg  bg-gray-700 hover:bg-gradient-to-r hover:from-gray-500 hover:to-slate-500`
+                  ? `${btnClasses} text-red-300 hover:text-red-900 w-12 rounded-full h-12 text-lg  bg-gray-700 hover:bg-gradient-to-r hover:from-gray-300 hover:to-slate-300`
                   : btn
                   ? `${btnClasses} text-white w-12 rounded-full h-12 text-lg bg-gray-700 hover:bg-gradient-to-r hover:from-gray-500 hover:to-slate-500 focus:ring-4 focus:ring-gray-300`
                   : ""
