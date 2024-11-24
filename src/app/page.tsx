@@ -150,7 +150,7 @@ export default function Home() {
                     h-[136px] row-span-2 w-12 rounded-lg text-zinc-950 text-5xl bg-white focus:ring-0`
                   : btn === "="
                   ? `${btnClasses} 
-                    w-52 sm:w-56 col-span-3 h-12 rounded-lg  text-zinc-300 text-5xl bg-amber-700 focus:ring-0`
+                    w-48 sm:w-56 col-span-3 h-12 rounded-lg  text-zinc-300 text-5xl bg-amber-600 focus:ring-0`
                   : btn === "-" ||
                     btn === "^" ||
                     btn === "()" ||
@@ -160,7 +160,7 @@ export default function Home() {
                   ? `${btnClasses} 
                     w-12 h-12 text-indigo-300 text-xl rounded-full bg-gray-700 hover:scale-105 hover:bg-gradient-to-r hover:from-gray-500 hover:to-slate-500 focus:ring-4 focus:ring-gray-300`
                   : btn === "Del" || btn === "Clr"
-                  ? `${btnClasses} text-red-400 w-12 rounded-full h-12 text-lg  bg-gray-700 hover:bg-gradient-to-r hover:from-gray-500 hover:to-slate-500`
+                  ? `${btnClasses} text-red-300 hover:text-red-700 w-12 rounded-full h-12 text-lg  bg-gray-700 hover:bg-gradient-to-r hover:from-gray-500 hover:to-slate-500`
                   : btn
                   ? `${btnClasses} text-white w-12 rounded-full h-12 text-lg bg-gray-700 hover:bg-gradient-to-r hover:from-gray-500 hover:to-slate-500 focus:ring-4 focus:ring-gray-300`
                   : ""
