@@ -51,7 +51,7 @@ export default function Home() {
   ];
 
   const btnClasses =
-    "m-4  font-semibold transition-transform transform  hover:scale-105  shadow-lg shadow-gray-600 active:scale-50 justify-self-center outline-none";
+    "m-4  font-semibold transition-transform transform  hover:scale-105  shadow-md shadow-gray-600 active:scale-50 justify-self-center outline-none";
 
   const [inputValue, setInputValue] = useState("");
   const [lastBracket, setLastBracket] = useState<"(" | ")" | null>(null); // State to track last bracket
