@@ -19,7 +19,7 @@ interface TypeButton {
 
 function Button({ text, className, handleClick }: TypeButton) {
   return (
-    <button type="button" className={className} onClick={handleClick}>
+    <button type="button" className={className} onClick={()=>handleClick()}>
       {text}
     </button>
   );
@@ -27,10 +27,10 @@ function Button({ text, className, handleClick }: TypeButton) {
 
 export default function Home() {
   const btnNames = [
-    "Clr",
+    "Del",
     "()",
     "%",
-    "Del",
+    "Clr",
     "7",
     "8",
     "9",
