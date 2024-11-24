@@ -25,49 +25,76 @@ function Button({ text, className, handleClick }: TypeButton) {
   );
 }
 
-
-
 export default function Home() {
   const btnNames = [
+    "Clr",
+    "()",
+    "%",
+    "Del",
     "7",
     "8",
     "9",
-    "Del",
+    "^",
     "4",
     "5",
     "6",
-    "/",
+    "×",
     "1",
     "2",
     "3",
-    "-",
+    "/",
     ".",
     "0",
-    "=",
+    "-",
     "+",
+    "=",
   ];
 
   const btnClasses =
-    "w-14 h-14 text-lg font-semibold text-white transition-transform transform rounded-full bg-gray-700 hover:scale-110 hover:bg-gradient-to-r hover:from-gray-500 hover:to-slate-500 focus:ring-4 focus:ring-gray-300 shadow-lg active:scale-95 justify-self-center";
+    "m-4  font-semibold transition-transform transform  hover:scale-105  shadow-lg active:scale-50 justify-self-center outline-none";
 
   const [inputValue, setInputValue] = useState("");
+  const [lastBracket, setLastBracket] = useState<"(" | ")" | null>(null); // State to track last bracket
+
 
   // Display Logic
   const display = (btn: string) => {
+    if (btn === "()") {
+      if (lastBracket === "(") {
+        setInputValue(inputValue + ")");
+        setLastBracket(")"); // Update last bracket to )
+      } else {
+        setInputValue(inputValue + "(");
+        setLastBracket("("); // Update last bracket to (
+      }
+      return;
+    }
+
     if (btn === ".") {
-      // Prevent multiple decimals in a single number
+      // /[^\d.]/ Yani ye pattern kisi bhi character ko match karta hai jo digit ya decimal point NAHI hai
+      // inputValue.split(/[^\d.]/) Yani inputValue ko split karta hai jahan operators (+,-,*,/) hain kisi bhi character ko jo digit ya decimal point NAHI hai  Example: Agar inputValue = "123+45.6" hai to split result hoga ["123", "45.6"]
+      // .pop() Yani last element ko remove karta hai array se
+      // || "" Yani agar inputValue.split(/[^\d.]/).pop() empty hai to currentNumber ko empty string set karta hai
       const currentNumber = inputValue.split(/[^\d.]/).pop() || "";
+      // currentNumber.includes(".") Yani agar currentNumber me "." hai to return karta hai
       if (currentNumber.includes(".")) return;
     }
 
-    if (["+", "-", "/", "*"].includes(btn)) {
-      // Prevent continuous operators
-      if (["+", "-", "/", "*"].includes(inputValue.slice(-1))) {
+    if (["+", "-", "/", "×" , "%", "^" ,"." ].includes(btn)) {
+      // inputValue.slice(-1) Yani last character ko remove karta hai
+      if (["+", "-", "/", "×" , "%", "^" ,"."].includes(inputValue.slice(-1))) {
+        // prev.slice(0, -1) Yani previous value ko remove karta hai
+        // + btn Yani previous value + current operator
+        // setInputValue Yani inputValue ko set karta hai
+        // prev.slice(0, -1) + btn Yani previous value ko remove karta hai aur current operator add karta hai
         setInputValue((prev) => prev.slice(0, -1) + btn);
         return;
       }
     }
-
+    // prev + btn Yani previous value + current operator
+    // setInputValue Yani inputValue ko set karta hai
+    // prev + btn Yani previous value + current operator
+    // Example: Agar inputValue = "123" hai aur btn = "+" hai to inputValue hoga "123+"
     setInputValue((prev) => prev + btn);
   };
 
@@ -79,10 +106,13 @@ export default function Home() {
         return;
       }
       const result = evaluate(inputValue);
-      setInputValue(String(result));
+      setInputValue(result ? result : "");
     } catch {
       setInputValue("Error");
     }
+  };
+  const clearOne = () => {
+    setInputValue(inputValue.slice(0, -1));
   };
 
   // Clear Input
@@ -99,7 +129,7 @@ export default function Home() {
     <main className="w-screen h-screen bg-gradient-to-tl from-gray-500 to-slate-500 flex items-center justify-center py-3 sm:py-10">
       <form
         onSubmit={handleFormSubmit}
-        className="w-[90%] sm:w-4/6 bg-[#030303e4] lg:w-1/4 selection:bg-transparent sm:h-full h-[80%]  rounded-lg border border-white flex flex-col gap-2 p-2"
+        className="w-[90%] sm:w-4/6 bg-[#030303e4] lg:w-1/4 selection:bg-transparent sm:h-full   rounded-lg border border-white flex flex-col gap-2 p-2"
         name="calc"
       >
         <input
@@ -109,17 +139,39 @@ export default function Home() {
           placeholder="0"
           readOnly
         />
-        <section className="w-full h-full border shadow-inner shadow-[#ffffffc2] border-white rounded-lg rounded-t-sm text-white grid gap-2 grid-cols-4 justify-center items-center">
+        <section className="w-full h-full border shadow-inner shadow-[#ffffffc2] border-white rounded-lg rounded-t-sm text-white  grid grid-cols-4 grid-rows-6">
           {btnNames.map((btn, index) => (
             <Button
               key={index}
               text={btn}
-              className={btnClasses}
+              className={
+                btn === "+"
+                  ? `${btnClasses} 
+                    h-[136px] row-span-2 w-12 rounded-lg text-zinc-950 text-5xl bg-white focus:ring-0`
+                  : btn === "="
+                  ? `${btnClasses} 
+                    w-56 col-span-3 h-12 rounded-lg  text-zinc-300 text-5xl bg-amber-700 focus:ring-0`
+                  : btn === "-" ||
+                    btn === "^" ||
+                    btn === "()" ||
+                    btn === "%" ||
+                    btn === "×" ||
+                    btn === "/"
+                  ? `${btnClasses} 
+                    w-12 h-12 text-indigo-300 text-xl rounded-full bg-gray-700 hover:scale-105 hover:bg-gradient-to-r hover:from-gray-500 hover:to-slate-500 focus:ring-4 focus:ring-gray-300`
+                  : btn === "Del" || btn === "Clr"
+                  ? `${btnClasses} text-red-400 w-12 rounded-full h-12 text-lg  bg-gray-700 hover:bg-gradient-to-r hover:from-gray-500 hover:to-slate-500`
+                  : btn
+                  ? `${btnClasses} text-white w-12 rounded-full h-12 text-lg bg-gray-700 hover:bg-gradient-to-r hover:from-gray-500 hover:to-slate-500 focus:ring-4 focus:ring-gray-300`
+                  : ""
+              }
               handleClick={
                 btn === "="
-                  ? calculate
+                  ? () => calculate()
                   : btn === "Del"
-                  ? clear
+                  ? () => clear()
+                  : btn === "Clr"
+                  ? () => clearOne()
                   : () => display(btn)
               }
             />
