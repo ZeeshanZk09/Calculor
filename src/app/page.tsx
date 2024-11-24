@@ -126,7 +126,7 @@ export default function Home() {
   };
 
   return (
-    <main className="h-fit bg-gradient-to-tl from-gray-500 to-slate-500 flex items-center justify-center py-3 sm:py-10">
+    <main className="w-screen h-screen bg-gradient-to-tl from-gray-500 to-slate-500 flex items-center justify-center py-3 sm:py-10">
       <form
         onSubmit={handleFormSubmit}
         className="w-full sm:w-4/6 bg-[#030303e4] lg:w-1/4 selection:bg-transparent sm:h-full   rounded-lg border border-white flex flex-col gap-2 p-2"
@@ -139,7 +139,7 @@ export default function Home() {
           placeholder="0"
           readOnly
         />
-        <section className="w-full h-full border shadow-inner shadow-[#ffffffc2] border-white rounded-lg rounded-t-sm text-white  grid grid-cols-4 grid-rows-6">
+        <section className="w-full h-fit border shadow-inner shadow-[#ffffffc2] border-white rounded-lg rounded-t-sm text-white  grid grid-cols-4 grid-rows-6">
           {btnNames.map((btn, index) => (
             <Button
               key={index}
@@ -150,7 +150,7 @@ export default function Home() {
                     h-[136px] row-span-2 w-12 rounded-lg text-zinc-950 text-5xl bg-white focus:ring-0`
                   : btn === "="
                   ? `${btnClasses} 
-                    w-48 sm:w-56 col-span-3 h-12 rounded-lg  text-zinc-300 text-5xl bg-yellow-600 focus:ring-0`
+                    w-52 sm:w-56 col-span-3 h-12 rounded-lg  text-zinc-300 text-5xl bg-yellow-500 focus:ring-0`
                   : btn === "-" ||
                     btn === "^" ||
                     btn === "()" ||
