@@ -150,7 +150,7 @@ export default function Home() {
                     h-[136px] row-span-2 w-12 rounded-lg text-zinc-950 text-5xl bg-white focus:ring-0`
                   : btn === "="
                   ? `${btnClasses} 
-                    w-52 sm:w-224 col-span-3 h-12 rounded-lg  text-zinc-300 text-5xl bg-yellow-500 focus:ring-0`
+                    w-52 sm:w-[200] col-span-3 h-12 rounded-lg  text-zinc-300 text-5xl bg-yellow-500 focus:ring-0`
                   : btn === "-" ||
                     btn === "^" ||
                     btn === "()" ||
