@@ -51,7 +51,7 @@ export default function Home() {
   ];
 
   const btnClasses =
-    "m-4  font-semibold transition-transform transform  hover:scale-105  shadow-lg active:scale-50 justify-self-center outline-none";
+    "m-4  font-semibold transition-transform transform  hover:scale-105  shadow-lg shadow-gray-600 active:scale-50 justify-self-center outline-none";
 
   const [inputValue, setInputValue] = useState("");
   const [lastBracket, setLastBracket] = useState<"(" | ")" | null>(null); // State to track last bracket
@@ -160,7 +160,7 @@ export default function Home() {
                   ? `${btnClasses} 
                     w-12 h-12 text-indigo-300 text-xl rounded-full bg-gray-700 hover:scale-105 hover:bg-gradient-to-r hover:from-gray-500 hover:to-slate-500 focus:ring-4 focus:ring-gray-300`
                   : btn === "Del" || btn === "Clr"
-                  ? `${btnClasses} text-red-300 hover:text-red-900 w-12 rounded-full h-12 text-lg  bg-gray-700 hover:bg-gradient-to-r hover:from-gray-300 hover:to-slate-300`
+                  ? `${btnClasses} text-red-300 hover:text-red-900 w-12 rounded-full h-12 text-lg  bg-gray-700 hover:bg-gradient-to-r hover:from-gray-300 hover:to-slate-300 focus:ring-4 focus:ring-gray-600`
                   : btn
                   ? `${btnClasses} text-white w-12 rounded-full h-12 text-lg bg-gray-700 hover:bg-gradient-to-r hover:from-gray-500 hover:to-slate-500 focus:ring-4 focus:ring-gray-300`
                   : ""
