@@ -38,7 +38,7 @@ export default function Home() {
     "4",
     "5",
     "6",
-    "×",
+    "*",
     "1",
     "2",
     "3",
@@ -80,9 +80,9 @@ export default function Home() {
       if (currentNumber.includes(".")) return;
     }
 
-    if (["+", "-", "/", "×" , "%", "^" ,"." ].includes(btn)) {
+    if (["+", "-", "/", "*" , "%", "^" ,"." ].includes(btn)) {
       // inputValue.slice(-1) Yani last character ko remove karta hai
-      if (["+", "-", "/", "×" , "%", "^" ,"."].includes(inputValue.slice(-1))) {
+      if (["+", "-", "/", "*" , "%", "^" ,"."].includes(inputValue.slice(-1))) {
         // prev.slice(0, -1) Yani previous value ko remove karta hai
         // + btn Yani previous value + current operator
         // setInputValue Yani inputValue ko set karta hai
@@ -126,10 +126,10 @@ export default function Home() {
   };
 
   return (
-    <main className="w-screen h-screen bg-gradient-to-tl from-gray-500 to-slate-500 flex items-center justify-center py-3 sm:py-10">
+    <main className="w-screen h-auto bg-gradient-to-tl from-gray-500 to-slate-500 flex items-center justify-center py-3 sm:py-10">
       <form
         onSubmit={handleFormSubmit}
-        className="w-[90%] h-fit sm:w-4/6 bg-[#030303e4] lg:w-1/4 selection:bg-transparent sm:h-full   rounded-lg border border-white flex flex-col gap-2 p-2"
+        className="w-[90%]  sm:w-4/6 bg-[#030303e4] lg:w-1/4 selection:bg-transparent sm:h-full   rounded-lg border border-white flex flex-col gap-2 p-2"
         name="calc"
       >
         <input
@@ -155,7 +155,7 @@ export default function Home() {
                     btn === "^" ||
                     btn === "()" ||
                     btn === "%" ||
-                    btn === "×" ||
+                    btn === "*" ||
                     btn === "/"
                   ? `${btnClasses} 
                     w-12 h-12 text-indigo-300 text-xl rounded-full bg-gray-700 hover:scale-105 hover:bg-gradient-to-r hover:from-gray-500 hover:to-slate-500 focus:ring-4 focus:ring-gray-300`
